@@ -1,0 +1,528 @@
+! Command: show running-config
+!
+terminal length 24
+!
+ip igmp snooping vlan 100 querier
+ip igmp snooping vlan 101 querier
+ip igmp snooping vlan 200 querier
+ip igmp snooping vlan 201 querier
+no ip igmp snooping vlan 600 querier
+no ip igmp snooping vlan 601 querier
+no ip igmp snooping vlan 610 querier
+no ip igmp snooping vlan 611 querier
+no ip igmp snooping vlan 620 querier
+no ip igmp snooping vlan 621 querier
+no ip igmp snooping vlan 630 querier
+no ip igmp snooping vlan 631 querier
+no ip igmp snooping vlan 650 querier
+no ip igmp snooping vlan 651 querier
+no ip igmp snooping vlan 670 querier
+no ip igmp snooping vlan 2000 querier
+no ip igmp snooping vlan 2001 querier
+no ip igmp snooping vlan 2003 querier
+ip igmp snooping querier
+ip igmp snooping querier address 10.1.2.67
+ip igmp snooping querier query-interval 60
+!
+load-interval default 5
+!
+transceiver qsfp default-mode 4x10G
+!
+lacp system-priority 8192
+!
+queue-monitor length
+!
+queue-monitor length log 2
+!
+queue-monitor length update-interval 5000000
+!
+lldp management-address Management1
+lldp management-address vrf Mgmnt
+!
+logging buffered 128000
+logging console informational
+logging format timestamp high-resolution
+logging facility local7
+logging vrf Mgmnt source-interface Management1
+!
+hostname VXLAN-pair2-higher
+ip name-server vrf default x.y.z.1
+ip name-server vrf default x.y.z.2
+ip name-server vrf default x.y.z.3
+ip domain-name x.y.z
+!
+ntp source vrf Mgmnt Management1
+!
+sflow sample 16384
+sflow source-interface Management1
+!
+snmp-server chassis-id vxlan-pair2-higher
+snmp-server contact Network Engineering
+snmp-server location FOO Test rack rack# RU #
+snmp-server source-interface Management1
+snmp-server community A view a ro 40
+snmp-server community B ro 40
+snmp-server community C ro 41
+snmp-server community D ro 40
+snmp-server community E ro 40
+!
+spanning-tree mode rapid-pvst
+no spanning-tree vlan 4094
+spanning-tree portfast bpduguard default
+!
+queue-monitor streaming
+   max-connections 5
+!
+enable secret 5 $1$foobar
+aaa root secret 5 $1$foobar
+!
+username admin privilege 15 role network-admin secret 5 $1$foobar
+!
+clock timezone GMT
+!
+vlan 1
+   state suspend
+!
+vlan 100
+   name vxlan-test-vlan1
+!
+vlan 101
+   name vxlan-test-vlan2
+!
+vlan 200
+   name vxlan-test-vlan3
+!
+vlan 201
+   name vxlan-test-vlan4
+!
+vlan 300
+   name vxlan-test-1
+!
+vlan 777
+   name Dummy_Native_VLAN
+   state suspend
+!
+vlan 4093
+   name Routed_Vlan
+!
+vlan 4094
+   name MLAG-peer-link-VLAN
+   trunk group MLAG-peer
+!
+vrf definition Mgmnt
+   rd 65002:1
+!
+interface Port-Channel1000
+   description vxlan-pair2-lower-PO1000
+   load-interval 5
+   switchport trunk native vlan 777
+   switchport trunk allowed vlan 100-101,200-201,300,4093-4094
+   switchport mode trunk
+   switchport trunk group MLAG-peer
+!
+interface Ethernet1
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet2
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet3
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet4
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet5
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet6
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet7
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet8
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet9
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet10
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet11
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet12
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet13
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet14
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet15
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet16
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet17
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet18
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet19
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet20
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet21
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet22
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet23
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet24
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet25
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet26
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet27
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet28
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet29
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet30
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet31
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet32
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet33
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet34
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet35
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet36
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet37
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet38
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet39
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet40
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet41
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet42
+   shutdown
+   load-interval 5
+   mtu 9212
+!
+interface Ethernet43
+   description Uplink to ldn-foo
+   load-interval 5
+   no switchport
+   ip address 10.1.2.26/30
+!
+interface Ethernet44
+   description Uplink to ldn-foo
+   load-interval 5
+   no switchport
+   ip address 10.1.2.30/30
+!
+interface Ethernet45
+   description vxlan-pair2-lower
+   load-interval 5
+   switchport trunk native vlan 777
+   switchport mode trunk
+   channel-group 1000 mode active
+!
+interface Ethernet46
+   description vxlan-pair2-lower
+   load-interval 5
+   switchport trunk native vlan 777
+   switchport mode trunk
+   channel-group 1000 mode active
+!
+interface Ethernet47
+   description vxlan-pair2-lower
+   load-interval 5
+   switchport trunk native vlan 777
+   switchport mode trunk
+   channel-group 1000 mode active
+!
+interface Ethernet48
+   description vxlan-pair2-lower
+   load-interval 5
+   switchport trunk native vlan 777
+   switchport mode trunk
+   channel-group 1000 mode active
+!
+interface Ethernet49/1
+!
+interface Ethernet49/2
+!
+interface Ethernet49/3
+!
+interface Ethernet49/4
+!
+interface Ethernet50/1
+!
+interface Ethernet50/2
+!
+interface Ethernet50/3
+!
+interface Ethernet50/4
+!
+interface Ethernet51/1
+!
+interface Ethernet51/2
+!
+interface Ethernet51/3
+!
+interface Ethernet51/4
+!
+interface Ethernet52/1
+!
+interface Ethernet52/2
+!
+interface Ethernet52/3
+!
+interface Ethernet52/4
+!
+interface Loopback0
+   description Router-ID
+   ip address 10.1.2.67/32
+!
+interface Loopback1
+   ip address 10.1.2.69/32
+!
+interface Management1
+   vrf forwarding Mgmnt
+   ip address 10.1.8.139/26
+!
+interface Vlan200
+   description vxlan-test-vlan3
+   ip address 10.1.8.91/27
+   ip virtual-router address 10.1.8.93
+!
+interface Vlan201
+   description vxlan-test-vlan4
+   ip address 10.1.2.123/27
+   ip virtual-router address 10.1.2.125
+!
+interface Vlan4093
+   description Routed Vlan
+   ip address 10.1.2.34/30
+   ip pim sparse-mode
+!
+interface Vlan4094
+   description MLAG peer-link
+   ip address 10.1.2.46/30
+!
+mac address-table aging-time 1200
+!
+ip virtual-router mac-address 02:1c:73:42:c0:fc
+!
+ip access-list FOO-ARISTA-CP-ACL
+   statistics per-entry
+   10 permit icmp any any
+   20 permit ip any any tracked
+   30 permit ospf any any
+   40 permit tcp any any eq ssh
+   50 permit tcp any any eq bgp
+   60 permit tcp any any eq msdp
+   70 permit tcp any any eq telnet www snmp https
+   80 permit udp any any eq bootps bootpc snmp rip
+   90 permit udp any any eq ptp-event ptp-general
+   100 permit tcp any any eq mlag ttl eq 255
+   110 permit udp any any eq mlag ttl eq 255
+   120 permit vrrp any any
+   130 permit ahp any any
+   140 permit pim any any
+   150 permit igmp any any
+   160 permit tcp any any range 5900 5910
+   170 permit tcp any any range 50000 50100
+   180 permit udp any any range 51000 51100
+!
+ip route vrf Mgmnt 0.0.0.0/0 10.1.8.189
+!
+ip routing
+no ip routing vrf Mgmnt
+!
+ip multicast-routing
+!
+control-plane
+   ip access-group FOO-ARISTA-CP-ACL in
+   ip access-group FOO-ARISTA-CP-ACL vrf Mgmnt in
+!
+mlag configuration
+   domain-id MLAG-DOMAIN-A
+   local-interface Vlan4094
+   peer-address 10.1.2.45
+   primary-priority 1
+   peer-link Port-Channel1000
+   reload-delay 60
+!
+ip ftp client source-interface Management1
+ip ssh client source-interface Management1
+ip tftp client source-interface Management1
+!
+router bgp 65002
+   router-id 10.1.2.67
+   bgp log-neighbor-changes
+   neighbor spine peer-group
+   neighbor spine remote-as 65005
+   neighbor spine maximum-routes 10000
+   neighbor 10.1.2.25 peer-group spine
+   neighbor 10.1.2.29 peer-group spine
+   neighbor 10.1.2.33 remote-as 65002
+  neighbor 10.1.3.33 next-hop-self
+   neighbor 10.1.3.33 update-source Vlan4093
+   neighbor 10.1.3.33 maximum-routes 10000
+   network 10.1.2.32/30
+   network 10.1.2.66/32
+   network 10.1.2.67/32
+   network 10.1.2.69/32
+   network 10.1.2.64/27
+   network 10.1.2.96/27
+!
+ip tacacs vrf Mgmnt source-interface Management1
+!
+banner login
+=------------------------------------------------------------------------------=
+BIG WARNING
+=------------------------------------------------------------------------------=
+EOF
+banner motd
+********************************************************************************
+*                                                                              *
+*   YOU ARE CONNECTED TO HOST <variable>          *
+* PLEASE ENSURE YOU ARE ACTING WITHIN YOUR AUTHORITY                     *
+*                                                                              *
+********************************************************************************
+EOF
+!
+management console
+   idle-timeout 15
+!
+management ssh
+   idle-timeout 15
+!
+management telnet
+   idle-timeout 1
+!
+!
+end
